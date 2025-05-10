@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import leftCookieImage from './assets/Left.png';
 import rightCookieImage from './assets/Right.png';
+import fortuneData from './data.json'; // Direct import of the JSON file
 
 function App() {
-  const [fortunes, setFortunes] = useState([]); // Initialize as empty array
+  const [fortunes] = useState(fortuneData.fortunes); // Replace hardcoded fortunes with the imported data
   const [fortuneText, setFortuneText] = useState('');
   const [dims, setDims] = useState({ width: 0, height: 0 });
   const [slider, setSlider] = useState(0.45); // 0 → closed, 1 → open
@@ -18,37 +19,16 @@ function App() {
   const rightRef = useRef();
   const containerRef = useRef();
 
-  // Fetch fortunes from data.json
+  // pick a random fortune on mount
   useEffect(() => {
-    const fetchFortunes = async () => {
-      try {
-        const response = await fetch('/src/data.json');
-        const data = await response.json();
-        setFortunes(data.fortunes);
-
-        if (data.fortunes && data.fortunes.length > 0) {
-          nextFortune(data.fortunes);
-        }
-      } catch (error) {
-        console.error('Error loading fortune data:', error);
-        const fallbackFortunes = [
-          "A beautiful day is awaiting you.",
-          "Your hard work will pay off soon."
-        ];
-        setFortunes(fallbackFortunes);
-        nextFortune(fallbackFortunes);
-      }
-    };
-
-    fetchFortunes();
+    nextFortune();
   }, []);
 
-  // Modified to accept fortunes array parameter, falls back to state if not provided
-  const nextFortune = (fortunesArray = fortunes) => {
-    if (fortunesArray.length === 0) return;
+  const nextFortune = () => {
+    if (fortunes.length === 0) return; // Guard clause if fortunes aren't available
 
     setFortuneText(
-      fortunesArray[Math.floor(Math.random() * fortunesArray.length)]
+      fortunes[Math.floor(Math.random() * fortunes.length)]
     );
   };
 
