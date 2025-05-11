@@ -26,6 +26,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           element={<ExternalRedirect to="https://renabazinin.github.io/wheel/" />} 
         />
         
+        <Route 
+          path="/toBazProject" 
+          element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/" />} 
+        />
+
         {/* Catch-all route for any other paths */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
