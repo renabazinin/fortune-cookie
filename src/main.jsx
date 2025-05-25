@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         />
         <Route 
           path="/toRenanCV" 
-          element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/CV" />} 
+          element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/#/CV" />} 
         />
 
         <Route path="/CV" element={<CV />} />
