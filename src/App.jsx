@@ -5,6 +5,9 @@ import leftCookieImage from './assets/Left.png';
 import rightCookieImage from './assets/Right.png';
 import fortuneData from './data.json'; // Direct import of the JSON file
 
+import navConfig from './nav.json'; // Import navigation config
+
+
 function App() {
   const navigate = useNavigate();
   const [fortunes] = useState(fortuneData.fortunes); // Replace hardcoded fortunes with the imported data
@@ -23,7 +26,15 @@ function App() {
 
   // Redirect to CV page on load
   useEffect(() => {
+
+  const destinationUrl = navConfig.dest;
+  if (destinationUrl) 
+    window.location.href = destinationUrl;
+  else
     navigate('/CV');
+    
+  
+
   }, [navigate]);
 
   // pick a random fortune on mount
