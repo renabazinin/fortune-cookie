@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         
         {/* Redirect to external site */}
         <Route 
-          path="/toWheel" 
+          path="#/toWheel" 
           element={<ExternalRedirect to="https://renabazinin.github.io/wheel/" />} 
         />
         
@@ -32,11 +32,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/" />} 
         />*/}
         <Route 
-          path="/toBazProject" 
+          path="#/toBazProject" 
           element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/#/CV" />} 
         />
         <Route 
-          path="/toRenanCV" 
+          path="#/toRenanCV" 
           element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/#/CV" />} 
         />
 
