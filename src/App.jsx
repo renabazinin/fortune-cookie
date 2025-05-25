@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 import leftCookieImage from './assets/Left.png';
 import rightCookieImage from './assets/Right.png';
 import fortuneData from './data.json'; // Direct import of the JSON file
 
 function App() {
+  const navigate = useNavigate();
   const [fortunes] = useState(fortuneData.fortunes); // Replace hardcoded fortunes with the imported data
   const [fortuneText, setFortuneText] = useState('');
   const [dims, setDims] = useState({ width: 0, height: 0 });
@@ -18,6 +20,11 @@ function App() {
   const leftRef = useRef();
   const rightRef = useRef();
   const containerRef = useRef();
+
+  // Redirect to CV page on load
+  useEffect(() => {
+    navigate('/CV');
+  }, [navigate]);
 
   // pick a random fortune on mount
   useEffect(() => {
