@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import App from './App.jsx'
+import CV from './CV.jsx'
 import './index.css'
 
 // Component to handle external redirect
@@ -31,7 +32,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/" />} 
         />
 
-        {/* Catch-all route for any other paths */}
+        <Route 
+          path="/toRenanCV" 
+          element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/CV" />} 
+        />
+
+        <Route path="fortune-cookie/CV" element={<CV />} />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </HashRouter>
