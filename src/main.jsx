@@ -27,17 +27,20 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           element={<ExternalRedirect to="https://renabazinin.github.io/wheel/" />} 
         />
         
-        <Route 
+        {/*<Route 
           path="/toBazProject" 
           element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/" />} 
+        />*/}
+        <Route 
+          path="/toBazProject" 
+          element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/#/CV" />} 
         />
-
         <Route 
           path="/toRenanCV" 
           element={<ExternalRedirect to="https://renabazinin.github.io/fortune-cookie/CV" />} 
         />
 
-        <Route path="fortune-cookie/CV" element={<CV />} />
+        <Route path="/CV" element={<CV />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
