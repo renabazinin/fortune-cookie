@@ -31,12 +31,12 @@ function App() {
       .then(navConfig => {
         const destinationUrl = navConfig.dest;
         if (destinationUrl) {
-          console.log('Redirecting to:', destinationUrl);
+          console.log('Redirecting to  :', destinationUrl);
           window.location.href = destinationUrl;
         } else {
           //navigate('/CV');
-          console.warn('No destination URL found in navConfig, we defaulting..');
-        }
+          console.warn('No destination URL found in navConfig, we defaulti ng..');
+        }  
       })
       .catch(error => {
         console.error('Failed to fetch navigation config:', error);
