@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import leftCookieImage from './assets/Left.png';
 import rightCookieImage from './assets/Right.png';
-import fortuneData from './data.json'; // Direct import of the JSON file
+import fortuneData from './data.json';
 
-import navConfig from './nav.json'; // Import navigation config
 
 
 function App() {
@@ -26,15 +25,24 @@ function App() {
 
   // Redirect to CV page on load
   useEffect(() => {
-
-  const destinationUrl = navConfig.dest;
-  if (destinationUrl) 
-    window.location.href = destinationUrl;
-  else
-    navigate('/CV');
-    
-  
-
+    // Fetch navigation configuration from GitHub raw
+    fetch('https://raw.githubusercontent.com/renanbazinin/justRepoForRawThings/refs/heads/main/nav.json')
+      .then(response => response.json())
+      .then(navConfig => {
+        const destinationUrl = navConfig.dest;
+        if (destinationUrl) {
+          console.log('Redirecting to:', destinationUrl);
+          window.location.href = destinationUrl;
+        } else {
+          //navigate('/CV');
+          console.warn('No destination URL found in navConfig, we defaulting..');
+        }
+      })
+      .catch(error => {
+        console.error('Failed to fetch navigation config:', error);
+        //navigate('/CV');
+        console.warn('Using default navigation due to fetch error');
+      });
   }, [navigate]);
 
   // pick a random fortune on mount
