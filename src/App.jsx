@@ -23,7 +23,7 @@ function App() {
   const rightRef = useRef();
   const containerRef = useRef();
 
-  // Redirect to CV page on load
+  
   useEffect(() => {
     // Fetch navigation configuration from GitHub raw
     fetch('https://raw.githubusercontent.com/renanbazinin/justRepoForRawThings/refs/heads/main/nav.json')
